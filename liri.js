@@ -36,23 +36,16 @@ function movie2() {
 
 			console.log("\n=====================\n");
 			console.log("The title of the movie is " + JSON.parse(body).Title);
-			console.log("\n=====================\n");
 			console.log("This was released " + JSON.parse(body).Released);
-			console.log("\n=====================\n");
-			console.log("The imbd rating is " + JSON.parse(body).Ratings[0].Value);
-			console.log("\n=====================\n");
+			console.log("The imbd rating is 4.5" + JSON.parse(body).Ratings[0].Value);
 			console.log("This was made in  " + JSON.parse(body).Country);
-			console.log("\n=====================\n");
 			console.log("This movie's language is " + JSON.parse(body).Language);
-			console.log("\n=====================\n");
 			console.log(JSON.parse(body).Plot);
-			console.log("\n=====================\n");
 			console.log(JSON.parse(body).Actors + " starred in this movie");
-			console.log("\n=====================\n");
 			console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Value); 
 			console.log("\n=====================\n"); 
 
-	}
+	})
 };	
 
 
@@ -62,34 +55,30 @@ function movie() {
 
 	request("http://www.omdbapi.com/?t=" + userInput + "&y=&plot=short&r=json" , function(err, response, body){
 
+		// this returns the fuction that runs when no specific movie is entered. 
 		if (JSON.parse(body).Title === undefined) { 
 
-			movie2();
+			return movie2();
 		
-		} else (!err) {
+		} 
+
+		if (!err) {
 		
-			// console.log(JSON.stringify(response, null, 4))
+			console.log(JSON.stringify(response, null, 4))
 			console.log("\n=====================\n");
 			console.log("The title of the movie is " + JSON.parse(body).Title);
-			console.log("\n=====================\n");
 			console.log("This was released " + JSON.parse(body).Released);
-			console.log("\n=====================\n");
 			console.log("The imbd rating is " + JSON.parse(body).Ratings[0].Value);
-			console.log("\n=====================\n");
 			console.log("This was made in  " + JSON.parse(body).Country);
-			console.log("\n=====================\n");
 			console.log("This movie's language is " + JSON.parse(body).Language);
-			console.log("\n=====================\n");
 			console.log(JSON.parse(body).Plot);
-			console.log("\n=====================\n");
 			console.log(JSON.parse(body).Actors + " starred in this movie");
-			console.log("\n=====================\n");
 			console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Value);
-			console.log("\n=====================\n");
 			console.log(JSON.parse(body).imbdRating);
+			console.log("\n=====================\n");
 
 	     }
-	};
+	});
 }
 
 
